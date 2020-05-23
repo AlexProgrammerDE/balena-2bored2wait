@@ -1,0 +1,12 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian-node:latest-buster
+
+RUN install_packages git npm
+
+RUN cd /usr/src/ \
+    && git clone https://github.com/themoonisacheese/2bored2wait.git \
+    && cd 2bored2wait \
+    && npm install
+
+COPY . /usr/src/
+
+CMD cd /usr/src/2bored2wait/ && bash replace_credentials.sh && npm start

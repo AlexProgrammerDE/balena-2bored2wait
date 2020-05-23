@@ -1,0 +1,15 @@
+version: '2'
+services:
+  2bored2wait:
+    network_mode: host
+    restart: always
+    build: ./2bored2wait
+    privileged: true
+    labels:
+      io.balena.features.dbus: 1
+      io.balena.features.supervisor-api: 1
+    ports:
+      - "25565:25565/udp"
+      - "25565:25565/tcp"
+      - "80:80/udp"
+      - "80:80/tcp"
